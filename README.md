@@ -69,7 +69,7 @@ Recommended split: **Supabase** (already hosted) + **Vercel** (Next.js) + **Rend
    | **Region** | closest to you |
    | **Root Directory** | *(leave empty — repo root)* |
    | **Runtime** | Node |
-   | **Build Command** | `npm install && npm run build -w api` |
+   | **Build Command** | `npm install --include=dev && npm run build -w api` |
    | **Start Command** | `npm run start -w api` |
    | **Instance type** | Free |
 
@@ -87,6 +87,8 @@ Recommended split: **Supabase** (already hosted) + **Vercel** (Next.js) + **Rend
 6. Test: `https://<api-url>/health` → `{"status":"ok"}`.
 
 **Note:** Free Render services **sleep after ~15 minutes** of no traffic. The first request after sleep can take 30–60 seconds (cold start).
+
+**Build failed with `Could not find declaration file for express` or `params` on `AuthRequest`?** Render sets `NODE_ENV=production`, which skips **devDependencies** unless you use `npm install --include=dev` in the build command (see above). You can also connect the repo using [`render.yaml`](render.yaml) at the repo root.
 
 ### 3. Deploy Next.js on Vercel (free)
 

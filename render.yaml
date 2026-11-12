@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: kanakpusthakam-api
+    runtime: node
+    plan: free
+    buildCommand: npm install --include=dev && npm run build -w api
+    startCommand: npm run start -w api
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
